@@ -3,10 +3,67 @@
 
 
 <!-- CAtegories Section Starts Here -->
-<section class="categories">
-    <div class="container flex flex-col justify-center">
-        <h2 class="text-center text-green-500 text-[2em] mb-5 font-bold">Explore Foods</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 place-content-center">
+<div class="bg-gradient-to-r from-black via-green-900 to-black">
+    <section class="categories ml-10 mr-10">
+        <h1 class="ml11 text-center p-10 text-[4em] font-bold">
+            <span class="text-wrapper">
+                <span class="line line1">__</span>
+                <span class="letters text-center text-green-500 text-3xl">
+
+                    <p class=" text-white text-3xl"> Explore</p>
+                </span>
+                <span class="line line1">__</span>
+                <span class="letters text-center text-white text-3xl">
+
+                    <p class=" text-white text-3xl">Foods</p>
+
+
+                </span>
+
+            </span>
+
+        </h1>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+        <script>
+            // Wrap every letter in a span
+            var textWrapper = document.querySelector('.ml11 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({
+                    loop: true
+                })
+                .add({
+                    targets: '.ml11 .line',
+                    scaleY: [0, 1],
+                    opacity: [0.5, 1],
+                    easing: "easeOutExpo",
+                    duration: 700
+                })
+                .add({
+                    targets: '.ml11 .line',
+                    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                    easing: "easeOutExpo",
+                    duration: 700,
+                    delay: 100
+                }).add({
+                    targets: '.ml11 .letter',
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=775',
+                    delay: (el, i) => 34 * (i + 1)
+                }).add({
+                    targets: '.ml11',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+        </script>
+        <div class="grid grid-cols-1 lg:grid-cols-4 place-content-center">
 
             <?php
 
@@ -31,7 +88,7 @@
             ?>
 
                     <a class="flex justify-center" href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
-                        <div class=" h-full w-[400px] float-container rounded-xl overflow-hidden">
+                        <div class=" h-[400px]] w-[300px] float-container rounded-xl overflow-hidden drop-shadow-md hover:drop-shadow-2xl ease-in duration-300">
                             <?php
                             if ($image_name == "") {
                                 //Image not Available
@@ -39,7 +96,7 @@
                             } else {
                                 //Image Available
                             ?>
-                                <img class="h-[500px] w-auto  max-w-none " src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" alt="Pizza" class="img-responsive img-curve">
+                                <img class="h-[400px] w-auto  max-w-none scale-100 hover:scale-[1.05] ease-in duration-300" src="<?php echo SITEURL; ?>images/category/<?php echo $image_name; ?>" alt="Pizza" class="img-responsive img-curve">
                             <?php
                             }
                             ?>
@@ -61,9 +118,9 @@
 
 
         <div class="clearfix"></div>
-    </div>
-</section>
-<!-- Categories Section Ends Here -->
+
+    </section>
+    <!-- Categories Section Ends Here -->
 
 
-<?php include('partials-front/footer.php'); ?>
+    <?php include('partials-front/footer.php'); ?>

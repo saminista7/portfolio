@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/style3.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdpn.io/cpe/boomboom/pen.js?key=pen.js-153eadeb-33e2-1701-e0d8-fdb7b99604b7" crossorigin=""></script>
@@ -47,8 +48,12 @@
                 <a href="index.php" title="Logo" class="logo-div">
                     <img src="images/logo.png" style="width: 70px; height: auto" alt="Restaurant Logo" class="img-responsive">
                     <h1 style="color: white" class="text-[4em] font-bold inline">
-                        <h1 class="text-green-500 text-[4em] font-bold ">AUST</h1>
-                        <h1 class="text text-[4em] font-bold font-extralight">Canteen</h1>
+                        <marquee behavior="scroll" direction="up" id="mytext">
+                            <h1 class="text-green-500 text-[.75] font-bold ">AUST</h1>
+                            <h1 class="text text-[.75em] font-bold font-extralight">Canteen</h1>
+                        </marquee>
+
+
                     </h1>
                 </a>
             </div>
@@ -66,7 +71,7 @@
                         <a href="<?php echo SITEURL; ?>foods.php">Foods</a>
                     </li>
                     <li class="logo scale-[1.05] hover:scale-[1.15] hover:bg-stone-900 hover:text-green-500 ease-in duration-300">
-                        <a href="#">Contact</a>
+                        <a href="contact.php">Contact</a>
                     </li>
                     <li class="logo scale-[1.05] hover:scale-[1.15] hover:bg-stone-900 hover:text-green-500 ease-in duration-300">
                         <a href="admin/login.php">Admin</a>

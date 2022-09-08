@@ -16,9 +16,67 @@
 
 
 <!-- fOOD MEnu Section Starts Here -->
-<section class="food-menu">
-    <h2 class="text-center text-green-500 font-bold text-[2em] mb-10">Food Menu</h2>
-    <div class="container grid grid-cols-1 lg:grid-cols-2 justify-items-center">
+<section class="food-menu bg-gradient-to-r from-black via-green-900 to-black">
+    <h1 class="ml11 text-center p-10 text-[4em] font-bold">
+        <span class="text-wrapper">
+            <span class="line line1">__</span>
+            <span class="letters text-center text-green-500 text-3xl">
+
+                <p class=" text-white text-3xl"> AUST</p>
+            </span>
+            <span class="line line1">__</span>
+            <span class="letters text-center text-white text-3xl">
+
+                <p class=" text-white text-3xl">Food Menu</p>
+
+
+            </span>
+
+        </span>
+
+    </h1>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+    <script>
+        // Wrap every letter in a span
+        var textWrapper = document.querySelector('.ml11 .letters');
+        textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({
+                loop: true
+            })
+            .add({
+                targets: '.ml11 .line',
+                scaleY: [0, 1],
+                opacity: [0.5, 1],
+                easing: "easeOutExpo",
+                duration: 700
+            })
+            .add({
+                targets: '.ml11 .line',
+                translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                easing: "easeOutExpo",
+                duration: 700,
+                delay: 100
+            }).add({
+                targets: '.ml11 .letter',
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 600,
+                offset: '-=775',
+                delay: (el, i) => 34 * (i + 1)
+            }).add({
+                targets: '.ml11',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
+    </script>
+
+    <div class="container grid grid-cols-1 lg:grid-cols-2 justify-items-center ">
 
 
         <?php
@@ -44,7 +102,7 @@
                 $risky = $row['health'];
         ?>
 
-                <div class="food-menu-box glass">
+                <div class="food-menu-box glass m-5 scale-100 hover:scale-110 clicked:scale-150 ease-in duration-300">
                     <div class="food-menu-img">
                         <?php
                         //CHeck whether image available or not
@@ -62,12 +120,12 @@
                     </div>
 
                     <div class="food-menu-desc">
-                        <h4><?php echo $title; ?></h4>
-                        <p class="food-price"><?php echo $price; ?> Tk</p>
-                        <p class="food-detail">
+                        <h4 class="text-2xl text-white"><?php echo $title; ?></h4>
+                        <p class="food-price font-bold"><?php echo $price; ?> Tk</p>
+                        <p class="food-detail text-white">
                             <?php echo $description; ?>
                         </p>
-                        <p class="food-detail" style="color: red;">
+                        <p class="food-detail text-red-500">
                             <?php echo 'Probable health Risk: ' . $risky; ?>
                         </p>
                         <br>

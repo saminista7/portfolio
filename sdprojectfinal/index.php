@@ -175,10 +175,81 @@ if (isset($_SESSION['order'])) {
     <!-- fOOD MEnu Section Starts Here -->
 
     <section class="food-menu ">
-        <h2 class="text-center text-[3em] font-semibold 
-            bg-gradient-to-r bg-clip-text  text-transparent 
-            from-amber-500 via-green-500 to-amber-500
-            animate-text mb-10">Food Menu</h2>
+        <?php
+
+
+
+        $sql = "SELECT * FROM notice WHERE active='Yes'";
+
+        //Execute the Query
+        $res = mysqli_query($conn, $sql);
+
+        //Count Rows
+        $count = mysqli_num_rows($res);
+        $row = mysqli_fetch_assoc($res);
+        //Get the Values
+        $notice = $row['notice'];
+        ?>
+        <marquee class="text-xl" behavior="scroll"><?php echo $notice; ?></marquee>
+        <hr class="mt-2">
+        <h1 class="ml11 text-center p-10 text-[4em] font-bold">
+            <span class="text-wrapper">
+                <span class="line line1">__</span>
+                <span class="letters text-center text-green-500 text-3xl">
+
+                    <p class=" text-white text-3xl"> AUST</p>
+                </span>
+                <span class="line line1">__</span>
+                <span class="letters text-center text-white text-3xl">
+
+                    <p class=" text-white text-3xl">Food Menu</p>
+
+
+                </span>
+
+            </span>
+
+        </h1>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+
+        <script>
+            // Wrap every letter in a span
+            var textWrapper = document.querySelector('.ml11 .letters');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({
+                    loop: true
+                })
+                .add({
+                    targets: '.ml11 .line',
+                    scaleY: [0, 1],
+                    opacity: [0.5, 1],
+                    easing: "easeOutExpo",
+                    duration: 700
+                })
+                .add({
+                    targets: '.ml11 .line',
+                    translateX: [0, document.querySelector('.ml11 .letters').getBoundingClientRect().width + 10],
+                    easing: "easeOutExpo",
+                    duration: 700,
+                    delay: 100
+                }).add({
+                    targets: '.ml11 .letter',
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 600,
+                    offset: '-=775',
+                    delay: (el, i) => 34 * (i + 1)
+                }).add({
+                    targets: '.ml11',
+                    opacity: 0,
+                    duration: 1000,
+                    easing: "easeOutExpo",
+                    delay: 1000
+                });
+        </script>
         <div class="container grid grid-cols-1 lg:grid-cols-4 justify-items-center gap-0 cursor-pointer bg-gradient-to-r from-black via-green-900 to-black">
 
 
@@ -207,7 +278,7 @@ if (isset($_SESSION['order'])) {
                     $risky = $row['health']
             ?>
 
-                    <div class="card w-96 glass scale-75 hover:scale-90 ease-in duration-300">
+                    <div class="card w-96 glass scale-75 hover:scale-90 clicked:scale-150 ease-in duration-300">
                         <figure class="overflow-hidden">
                             <?php
                             //Check whether image available or not
