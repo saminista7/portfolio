@@ -28,7 +28,7 @@ function Redirect($url, $permanent = false)
                     <input class="input input-bordered  input-success w-full mb-1 hover:rounded-3xl ease-in duration-300" type="text" name="full-name" placeholder="E.g. Ahnaf Samin" class="input-responsive" required>
 
                     <div class="order-label text-white mt-2">Phone Number</div>
-                    <input class="input input-bordered input-success w-full mb-1" type="tel" name="contact" placeholder="E.g. 01876096649" class="input-responsive" required>
+                    <input class="input input-bordered input-success w-full mb-1" type="tel" name="contact" maxlength="11" placeholder="E.g. 01876096649" class="input-responsive" required>
 
                     <div class="order-label text-white mt-2 ">AUST Edu mail</div>
                     <input class="input input-bordered input-success w-full mb-1" type="email" name="email" placeholder="E.g. 190204031@aust.edu" class="input-responsive" required>
