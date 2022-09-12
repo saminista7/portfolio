@@ -9,7 +9,7 @@
     margin: 0 0;
     padding: 0 0;
     /* font-family: Trebuchet MS, Helvetica, sans-serif; */
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Poppins", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     
 }
 
@@ -28,6 +28,8 @@
 .img-curve{
     border-radius: 15px;
 }
+
+
 
 .text-right{
     text-align: right;
@@ -85,7 +87,7 @@ h3{
 .float-text{
     position: absolute;
     bottom: 50px;
-    left: 40%;
+    /* left: 40%; */
 }
 fieldset{
     border: 1px solid white;
@@ -103,6 +105,26 @@ fieldset{
     color: green;
 }
 
+/* scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #686868; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(69, 163, 90); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(49, 121, 63); 
+  }
 
 
 
@@ -262,10 +284,11 @@ fieldset{
     padding: 1%;
     margin-bottom: 3%;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     font-size: 1rem;
 }
 .order-label{
+    color: white;
     margin-bottom: 1%; 
     font-weight: bold;
 }

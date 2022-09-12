@@ -25,6 +25,11 @@
     clear: both;
 }
 
+.area{
+    height: 100%;
+    width: 100%;
+}
+
 .tbl-full{
     width: 100%;
 }

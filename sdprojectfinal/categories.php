@@ -4,8 +4,8 @@
 
 <!-- CAtegories Section Starts Here -->
 <div class="bg-gradient-to-r from-black via-green-900 to-black">
-    <section class="categories ml-10 mr-10">
-        <h1 class="ml11 text-center p-10 text-[4em] font-bold">
+    <section class="categories ml-10 mr-10 mb-5">
+        <h1 class="ml11 text-center mb-5 text-[4em] font-bold">
             <span class="text-wrapper">
                 <span class="line line1">__</span>
                 <span class="letters text-center text-green-500 text-3xl">
@@ -63,7 +63,7 @@
                     delay: 1000
                 });
         </script>
-        <div class="grid grid-cols-1 lg:grid-cols-4 place-content-center">
+        <div class="grid grid-cols-1 lg:grid-cols-4 place-content-center mt-10 " style="grid-row-gap: 50px;">
 
             <?php
 
@@ -88,7 +88,7 @@
             ?>
 
                     <a class="flex justify-center" href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
-                        <div class=" h-[400px]] w-[300px] float-container rounded-xl overflow-hidden drop-shadow-md hover:drop-shadow-2xl ease-in duration-300">
+                        <div style="display: flex; justify-content: center" class="justify-content h-[400px]] w-[300px] float-container rounded-xl overflow-hidden drop-shadow-md hover:drop-shadow-2xl ease-in duration-300">
                             <?php
                             if ($image_name == "") {
                                 //Image not Available
@@ -102,7 +102,7 @@
                             ?>
 
 
-                            <h3 class="float-text text-white text-2xl font-semibold"><?php echo $title; ?></h3>
+                            <h3 class="float-text text-white text-2xl font-semibold text-center"><?php echo $title; ?></h3>
                         </div>
                     </a>
 

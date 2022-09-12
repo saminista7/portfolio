@@ -25,9 +25,8 @@
 
     <!-- fOOD sEARCH Section Starts Here -->
     <section class="food-search-bg text-center">
-        <div class="container">
-
-            <h2>Foods on <a href="#" class="text-white">"<?php echo $category_title; ?>"</a></h2>
+        <div class="container bg-black rounded-2xl h-[72px] p-5 opacity-70">
+            <h2 class="text-2xl font-bold text-white ">Foods on Category <a href="#" class="text-white">"<?php echo $category_title; ?>"</a></h2>
 
         </div>
     </section>
@@ -36,35 +35,38 @@
 
 
     <!-- fOOD MEnu Section Starts Here -->
-    <section class="food-menu">
-        <div class="container">
-            <h2 class="text-center">Food Menu</h2>
+    <section class="food-menu bg-gradient-to-r from-black via-green-900 to-black">
+
+        <div class="container grid grid-cols-1 lg:grid-cols-2 justify-items-center ">
+
 
             <?php
-
-            //Create SQL Query to Get foods based on Selected CAtegory
-            $sql2 = "SELECT * FROM tbl_food WHERE category_id=$category_id";
+            //Display Foods that are Active
+            $sql = "SELECT * FROM tbl_food WHERE category_id=$category_id";
 
             //Execute the Query
-            $res2 = mysqli_query($conn, $sql2);
+            $res = mysqli_query($conn, $sql);
 
-            //Count the Rows
-            $count2 = mysqli_num_rows($res2);
+            //Count Rows
+            $count = mysqli_num_rows($res);
 
-            //CHeck whether food is available or not
-            if ($count2 > 0) {
-                //Food is Available
-                while ($row2 = mysqli_fetch_assoc($res2)) {
-                    $id = $row2['id'];
-                    $title = $row2['title'];
-                    $price = $row2['price'];
-                    $description = $row2['description'];
-                    $image_name = $row2['image_name'];
+            //CHeck whether the foods are availalable or not
+            if ($count > 0) {
+                //Foods Available
+                while ($row = mysqli_fetch_assoc($res)) {
+                    //Get the Values
+                    $id = $row['id'];
+                    $title = $row['title'];
+                    $description = $row['description'];
+                    $price = $row['price'];
+                    $image_name = $row['image_name'];
+                    $risky = $row['health'];
             ?>
 
-                    <div class="food-menu-box">
+                    <div style="justify-content: center; display: flex;" class="food-menu-box glass m-5 scale-100 hover:scale-110 clicked:scale-150 ease-in duration-300">
                         <div class="food-menu-img">
                             <?php
+                            //CHeck whether image available or not
                             if ($image_name == "") {
                                 //Image not Available
                                 echo "<div class='error'>Image not Available.</div>";
@@ -79,25 +81,30 @@
                         </div>
 
                         <div class="food-menu-desc">
-                            <h4><?php echo $title; ?></h4>
-                            <p class="food-price">$<?php echo $price; ?></p>
-                            <p class="food-detail">
+                            <h4 class="text-2xl text-white font-bold"><?php echo $title; ?></h4>
+                            <p class="food-price font-bold"><?php echo $price; ?> Tk</p>
+                            <p class="food-detail text-white">
                                 <?php echo $description; ?>
+                            </p>
+                            <p class="food-detail text-red-500 font-semibold">
+                                <?php echo 'Probable health Risk: ' . $risky; ?>
                             </p>
                             <br>
 
                             <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Order Now</a>
+
                         </div>
                     </div>
 
             <?php
                 }
             } else {
-                //Food not available
-                echo "<div class='error'>Food not Available.</div>";
+                //Food not Available
+                echo "<div class='error'>Food not found.</div>";
             }
-
             ?>
+
+
 
 
 

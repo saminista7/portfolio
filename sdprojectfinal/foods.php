@@ -5,8 +5,8 @@
     <div class="container">
 
         <form action="<?php echo SITEURL; ?>food-search.php" method="POST">
-            <input type="search" name="search" placeholder="Search for Food.." required>
-            <input type="submit" name="submit" value="Search" class="btn btn-primary">
+            <input class="text-black focus:border-green-500 scale-100 hover:scale-[1.02] ease-in duration-300" type="search" name="search" placeholder="Search for Food.." required>
+            <input type="submit" name="submit" value="Search" class="btn btn-primary ml-2">
         </form>
 
     </div>
@@ -17,7 +17,7 @@
 
 <!-- fOOD MEnu Section Starts Here -->
 <section class="food-menu bg-gradient-to-r from-black via-green-900 to-black">
-    <h1 class="ml11 text-center p-10 text-[4em] font-bold">
+    <h1 class="ml11 text-center text-[4em] font-bold">
         <span class="text-wrapper">
             <span class="line line1">__</span>
             <span class="letters text-center text-green-500 text-3xl">
@@ -76,7 +76,7 @@
             });
     </script>
 
-    <div class="container grid grid-cols-1 lg:grid-cols-2 justify-items-center ">
+    <div class="container grid grid-cols-1 lg:grid-cols-2 justify-items-center mt-5">
 
 
         <?php
@@ -120,12 +120,12 @@
                     </div>
 
                     <div class="food-menu-desc">
-                        <h4 class="text-2xl text-white"><?php echo $title; ?></h4>
+                        <h4 class="text-2xl text-white font-bold"><?php echo $title; ?></h4>
                         <p class="food-price font-bold"><?php echo $price; ?> Tk</p>
                         <p class="food-detail text-white">
                             <?php echo $description; ?>
                         </p>
-                        <p class="food-detail text-red-500">
+                        <p class="food-detail text-red-500 font-semibold">
                             <?php echo 'Probable health Risk: ' . $risky; ?>
                         </p>
                         <br>

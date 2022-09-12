@@ -48,7 +48,7 @@
                 <a href="index.php" title="Logo" class="logo-div">
                     <img src="images/logo.png" style="width: 70px; height: auto" alt="Restaurant Logo" class="img-responsive">
                     <h1 style="color: white" class="text-[4em] font-bold inline">
-                        <marquee behavior="scroll" direction="up" id="mytext">
+                        <marquee onmouseover="this.stop();" onmouseout="this.start();" behavior="scroll" direction="up" id="mytext">
                             <h1 class="text-green-500 text-[.75] font-bold ">AUST</h1>
                             <h1 class="text text-[.75em] font-bold font-extralight">Canteen</h1>
                         </marquee>

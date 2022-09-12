@@ -1,10 +1,32 @@
-$count2 = mysqli_num_rows($res2);
+<?php
 
-            //CHeck whether food available or not
-            if ($count2 > 0) {
+//Include constants.php file here
+include('../config/constants.php');
 
-?>
-else {
-                //Food Not Available 
-                echo "<div class='error'>Food not available.</div>";
-            }
+// 1. get the ID of Admin to be deleted
+
+//2. Create SQL Query to Delete Admin
+$sql = "UPDATE notice SET
+active = 'No'
+WHERE active='Yes'";
+
+//Execute the Query
+$res = mysqli_query($conn, $sql);
+
+// Check whether the query executed successfully or not
+if ($res == true) {
+    //Query Executed Successully and Admin Deleted
+    //echo "Admin Deleted";
+    //Create SEssion Variable to Display Message
+    $_SESSION['delete'] = "<div class='success'>Notice Reset Successfully.</div>";
+    //Redirect to Manage Admin Page
+    header('location:' . SITEURL . 'admin/notices.php');
+} else {
+    //Failed to Delete Admin
+    //echo "Failed to Delete Admin";
+
+    $_SESSION['delete'] = "<div class='error'>Failed to Reset Notice. Try Again Later.</div>";
+    header('location:' . SITEURL . 'admin/manage-admin.php');
+}
+
+    //3. Redirect to Manage Admin page with message (success/error)

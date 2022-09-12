@@ -44,14 +44,15 @@
 
         <!-- Button to Add Admin -->
         <a href="add-notice.php" class="btn-primary">Add notice</a>
+        <a href="<?php echo SITEURL; ?>admin/delete-notice.php" class="btn-danger">Reset Active Notice</a>
 
         <br /><br /><br />
 
         <table class="tbl-full">
             <tr>
                 <th>S.N.</th>
-                <th>Full Name</th>
-                <th>Username</th>
+                <th>Notice</th>
+                <th>State</th>
                 <th>Actions</th>
             </tr>
 
@@ -88,11 +89,6 @@
                             <td><?php echo $sn++; ?>. </td>
                             <td><?php echo $full_name; ?></td>
                             <td><?php echo $username; ?></td>
-                            <td>
-
-                                <a href="<?php echo SITEURL; ?>admin/update-admin.php" class="btn-secondary">Update Notice</a>
-                                <a href="<?php echo SITEURL; ?>admin/delete-notice.php" class="btn-danger">Delete Notice</a>
-                            </td>
                         </tr>
 
             <?php

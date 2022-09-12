@@ -100,13 +100,14 @@
 
 </section>
 <!-- fOOD sEARCH Section Ends Here -->
-
-<?php
-if (isset($_SESSION['order'])) {
-    echo $_SESSION['order'];
-    unset($_SESSION['order']);
-}
-?>
+<div class="bg-black">
+    <?php
+    if (isset($_SESSION['order'])) {
+        echo $_SESSION['order'];
+        unset($_SESSION['order']);
+    }
+    ?>
+</div>
 
 <!-- CAtegories Section Starts Here -->
 <div class="bg-gradient-to-r from-black via-green-900 to-black">
@@ -117,7 +118,7 @@ if (isset($_SESSION['order'])) {
 
             //Display all the cateories that are active
             //Sql Query
-            $sql = "SELECT * FROM tbl_category WHERE active='Yes' and featured='Yes'";
+            $sql = "SELECT * FROM tbl_category WHERE active='Yes' and featured='Yes' limit 4";
 
             //Execute the Query
             $res = mysqli_query($conn, $sql);
@@ -136,7 +137,7 @@ if (isset($_SESSION['order'])) {
             ?>
 
                     <a class="flex justify-center" href="<?php echo SITEURL; ?>category-foods.php?category_id=<?php echo $id; ?>">
-                        <div class=" h-[400px]] w-[300px] float-container rounded-xl overflow-hidden drop-shadow-md hover:drop-shadow-2xl ease-in duration-300">
+                        <div style="display: flex; justify-content: center" class="justify-content h-[400px]] w-[300px] float-container rounded-xl overflow-hidden drop-shadow-md hover:drop-shadow-2xl ease-in duration-300">
                             <?php
                             if ($image_name == "") {
                                 //Image not Available
@@ -150,7 +151,7 @@ if (isset($_SESSION['order'])) {
                             ?>
 
 
-                            <h3 class="float-text text-white text-2xl font-semibold"><?php echo $title; ?></h3>
+                            <h3 class="float-text text-white text-2xl font-semibold text-center"><?php echo $title; ?></h3>
                         </div>
                     </a>
 
@@ -179,7 +180,7 @@ if (isset($_SESSION['order'])) {
 
 
 
-        $sql = "SELECT * FROM notice WHERE active='Yes'";
+        $sql = "SELECT * FROM notice WHERE active='Yes' limit 4";
 
         //Execute the Query
         $res = mysqli_query($conn, $sql);
@@ -190,7 +191,7 @@ if (isset($_SESSION['order'])) {
         //Get the Values
         $notice = $row['notice'];
         ?>
-        <marquee class="text-xl" behavior="scroll"><?php echo $notice; ?></marquee>
+        <marquee class="text-xl" behavior="scroll" onmouseover="this.stop();" onmouseout="this.start();"><?php echo $notice; ?></marquee>
         <hr class="mt-2">
         <h1 class="ml11 text-center p-10 text-[4em] font-bold">
             <span class="text-wrapper">
@@ -278,7 +279,7 @@ if (isset($_SESSION['order'])) {
                     $risky = $row['health']
             ?>
 
-                    <div class="card w-96 glass scale-75 hover:scale-90 clicked:scale-150 ease-in duration-300">
+                    <div style="justify-content: center; display: flex;" class="card w-96 glass scale-75 hover:scale-90 clicked:scale-150 ease-in duration-300">
                         <figure class="overflow-hidden">
                             <?php
                             //Check whether image available or not
@@ -299,7 +300,7 @@ if (isset($_SESSION['order'])) {
                             <p class="food-detail text-amber-100 text-[1.3em]">
                                 <?php echo $description; ?>
                             </p>
-                            <p class="food-detail text-red-400 text-[1.3em]">
+                            <p class="food-detail text-red-500 font-semibold text-[1.4em]">
                                 <?php echo 'Probable health Risk: ' . $risky; ?>
                             </p>
                             <br>

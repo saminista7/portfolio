@@ -70,12 +70,12 @@ if (isset($_GET['food_id'])) {
                     </div>
 
                     <div class="food-menu-desc">
-                        <h3 class="text-2xl font-semibold"><?php echo $title; ?></h3>
+                        <h3 class="text-2xl font-semibold text-white"><?php echo $title; ?></h3>
                         <input type="hidden" name="food" value="<?php echo $title; ?>">
-                        <p class="text-black text-xl font-semibold"><?php echo $price; ?> tk/ piece</p>
+                        <p class="text-white text-xl font-semibold bg-emerald-900 rounded-3xl w-fit p-2"><?php echo $price; ?> tk</p>
                         <input type="hidden" name="price" value="<?php echo $price; ?>">
-                        <div class="order-label">Quantity</div>
-                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="qty" class="input-responsive " maxlength="1" value="1" required>
+                        <div class="order-label mt-2">Quantity</div>
+                        <input type="number" class="input success text-white" oninput="javascript: if (this.value.length > this.max.length ) this.value = this.value.slice(0,maxLength);" name="qty" class="input-responsive " max="10" maxlength="2" value="1" required>
 
                     </div>
 
@@ -112,7 +112,7 @@ if (isset($_GET['food_id'])) {
                     <select class="select select-success input input-bordered input-success w-full mb-1" id="size" name="block" required>
                         <option disabled selected>Pick your Location</option>
                     </select>
-                    <input class="btn btn-active btn-primary mt-5" type="submit" name="submit" value="Confirm Order" class="btn btn-secondary">
+                    <input class="btn btn-active btn-success mt-5 border-none hover:bg-emerald-700 hover:text-white mt-5" type="submit" name="submit" value="Confirm Order" class="btn btn-secondary">
 
                 </fieldset>
 
@@ -228,5 +228,4 @@ if (isset($_GET['food_id'])) {
             ?>
         </div>
 </section>
-< !--fOOD sEARCH Section Ends Here-->
-    <?php include('partials-front/footer.php'); ?>
+<?php include('partials-front/footer.php'); ?>

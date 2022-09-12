@@ -3,7 +3,7 @@
 <div class="main-content">
     <div class="wrapper">
         <h1>Add Notice</h1>
-
+        <p>Keep only one notice active</p>
         <br><br>
 
         <?php

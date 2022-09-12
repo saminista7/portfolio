@@ -13,28 +13,28 @@ function Redirect($url, $permanent = false)
 
 
         <!-- <hr class="mb-10"> -->
-        <div class="bg-black gap-10 justify-items-center w-[1000px] center h-[1000px]">
-            <h2 class="text-center text-black text-2xl font-bold mb-10 mt-10">Fill this form to send feedback</h2>
-            <form action="" method="POST" class="order mt-10">
+        <div class="mt-[-30px] bg-black gap-10 justify-items-center w-[1050px] center h-[900px]">
 
-                <fieldset style="border: 5px; border-radius: 2em" class="bg-green-700 w-[500px] p-10 glass hover:bg-green-500 ease-in duration-300">
-                    <h2 class="text-center text-white text-2xl font-bold mb-10 mt-10">Fill this form to send feedback</h2>
+            <form action="" method="POST" class="order mt-10  rounded-3xl p-5 pt-[40px] bg-green-600">
+
+                <fieldset style="border: 5px" class="glass rounded-3xl bg-green-600 glass hover:bg-black ease-in duration-300">
+                    <h2 class=" text-left ml-5 text-white text-3xl mb-5 mt-10">Feedback Form</h2>
 
                 </fieldset>
 
                 <fieldset style="border: 5px" class="mt-5">
-                    <legend class="text-2xl ">Details</legend>
-                    <div class="order-label mt-5">Full Name</div>
-                    <input class="input input-bordered input-success w-full mb-1" type="text" name="full-name" placeholder="E.g. Ahnaf Samin" class="input-responsive" required>
+                    <!-- <legend class="text-2xl ">Feedback Form</legend> -->
+                    <div class="order-label text-white mt-5">Full Name</div>
+                    <input class="input input-bordered  input-success w-full mb-1 hover:rounded-3xl ease-in duration-300" type="text" name="full-name" placeholder="E.g. Ahnaf Samin" class="input-responsive" required>
 
-                    <div class="order-label mt-2">Phone Number</div>
+                    <div class="order-label text-white mt-2">Phone Number</div>
                     <input class="input input-bordered input-success w-full mb-1" type="tel" name="contact" placeholder="E.g. 01876096649" class="input-responsive" required>
 
-                    <div class="order-label mt-2 ">AUST Edu mail</div>
+                    <div class="order-label text-white mt-2 ">AUST Edu mail</div>
                     <input class="input input-bordered input-success w-full mb-1" type="email" name="email" placeholder="E.g. 190204031@aust.edu" class="input-responsive" required>
-                    <div class="order-label mt-2 ">Your Message</div>
-                    <textarea name="comment" class="w-full bg-black rounded h-[210px]" required>Enter text here...</textarea>
-                    <input class="btn btn-active btn-primary mt-5" type="submit" name="submit" value="Send Message" class="btn btn-secondary">
+                    <div class="order-label text-white mt-2 ">Your Message</div>
+                    <textarea name="comment" class="w-full bg-black input input-bordered input-success rounded-3xl h-[210px]" placeholder=" E.g. Enter your message here..." required></textarea>
+                    <input class="btn btn-active btn-success mt-5 border-none hover:bg-emerald-700 hover:text-white" type="submit" name="submit" value="Send Message" class="btn btn-secondary">
                 </fieldset>
 
                 <!-- <script>
@@ -75,34 +75,23 @@ function Redirect($url, $permanent = false)
             if (isset($_POST['submit'])) {
                 // Get all the details from the form
 
-                $food = $_POST['food'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
-
-                $total = $price * $qty; // total = price x qty 
-
                 $order_date = date("Y-m-d h:i:sa"); //Order DAte
 
-                $status = "Ordered";  // Ordered, On Delivery, Delivered, Cancelled
+                $status = $_POST['comment'];  // Ordered, On Delivery, Delivered, Cancelled
 
                 $customer_name = $_POST['full-name'];
                 $customer_contact = $_POST['contact'];
                 $customer_email = $_POST['email'];
-                $customer_address = $_POST['floor'] . " " . $_POST['block'];
+
 
                 $email_regex = "/([1-2])+@([a-zA-Z])+(.edu)+/";
                 if (preg_match($email_regex, $customer_email)) {
-                    $sql2 = "INSERT INTO tbl_order SET 
-                            food = '$food',
-                            price = $price,
-                            qty = $qty,
-                            total = $total,
+                    $sql2 = "INSERT INTO tbl_contact SET 
                             order_date = '$order_date',
-                            status = '$status',
                             customer_name = '$customer_name',
                             customer_contact = '$customer_contact',
                             customer_email = '$customer_email',
-                            customer_address = '$customer_address'
+                            status = '$status'
                         ";
 
                     //echo $sql2; die();
@@ -113,13 +102,13 @@ function Redirect($url, $permanent = false)
                     //Check whether query executed successfully or not
                     if ($res2 == true) {
                         //Query Executed and Order Saved
-                        $_SESSION['order'] = "<div class='success text-center'>Food Ordered Successfully.</div>";
+                        $_SESSION['order'] = "<div class='success text-center'>Feedback Sent Successfully.</div>";
 
                         Redirect(SITEURL, true);
                         // header('location:' . SITEURL);
                     } else {
                         //Failed to Save Order
-                        $_SESSION['order'] = "<div class='error text-center'>Failed to Order Food.</div>";
+                        $_SESSION['order'] = "<div class='error text-center'>Failed to Send Feedback.</div>";
                         Redirect(SITEURL, true);
                         // header('location:' . SITEURL);
                     }
@@ -132,5 +121,4 @@ function Redirect($url, $permanent = false)
             ?>
         </div>
 </section>
-< !--fOOD sEARCH Section Ends Here-->
-    <?php include('partials-front/footer.php'); ?>
+<?php include('partials-front/footer.php'); ?>
